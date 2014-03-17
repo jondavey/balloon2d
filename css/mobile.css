@@ -41,3 +41,9 @@ canvas {
     font-weight: bolder;
 
 }
+#git-link {
+    position: fixed;
+    padding-left: 10px;
+    bottom: 10px;
+    z-index: 20000;
+}

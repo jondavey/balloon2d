@@ -120,3 +120,8 @@ canvas {
     display: block;
     margin: auto;
 }
+#git-link a {
+    font-size: .8em;
+    color: #FFF;
+    text-decoration: none;
+}
