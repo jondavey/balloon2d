@@ -41,7 +41,7 @@ $scriptVersion = $detect->getScriptVersion();
         <div id="preload-bar"></div>
         <canvas id="debug" width="1200" height="900"></canvas>
         <canvas id="game-canvas" width="1200" height="900"></canvas>
-        <div id="git-link"><a href="https://github.com/jondavey/balloon2d/" target="_blank">GIT Repository.</a></div>
+        <div id="git-link"><a href="https://github.com/jondavey/balloon2d/" target="_blank">GIT Repository</a></div>
     </div>
 
     <script type="text/javascript">
