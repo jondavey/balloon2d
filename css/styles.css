@@ -1,0 +1,122 @@
+* { 
+    -webkit-tap-highlight-color:transparent;
+}
+html, body {
+    overflow:hidden;
+    font-family: Arial;
+    color: #FFF;
+    padding: 0;
+    margin: 0;
+    background-color: #48D;
+    height: 100%;
+}
+.inactive{
+    -webkit-user-select: none;
+     -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#container {
+    position: relative;
+    width: 100%;
+   text-align:center;
+   padding-top: 10px;
+   height: 100%;
+}
+#preload-bar {
+    height: 3px;
+    width: 0%;
+    background-color: #FFF;
+    position:absolute;
+    top:50%;
+}
+canvas {
+    /*position: absolute;*/
+    display: none;
+    border: 6px solid #FFF;
+
+}
+#debug {
+    z-index: 1000;
+    display: none;
+}
+#scoreboard {
+    position: absolute;
+    font-family: Arial;
+    display: none;
+    background-color: #a9e84f;
+    padding: 10px;
+    width: 320px;
+    height: 60px;
+    top: -90;
+    font-size: 1em;
+    text-align: center;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    -webkit-box-shadow: 0 3px 5px 2px rgba(0,0,0,.4);
+    box-shadow: 0 3px 5px 2px rgba(0,0,0,.4);
+}
+#scoreboard>div{
+    float: left;
+    width: 33%;
+}
+#score>p, #balloons>p, #arrows>p {
+    border-top: 1px solid #888;
+    font-size: 2em;
+    margin: 0;
+}
+#bonus {
+    position: absolute;
+    opacity:0;
+    color: #FFF;
+    font-size: 3em;
+    font-family: Arial;
+    font-weight: bolder;
+    text-shadow: 1px 1px 1px #242424;
+    z-index: 10001;
+}
+#game-over{
+    text-align: center;
+    width: 100% !important;
+}
+#game-over a {
+    text-decoration: none;
+    color: #FE2C0C;
+    font-size: .9em;
+    font-weight: bolder;
+}
+#game-over>p {
+    margin-top: .5em;
+}
+#username {
+    text-align: center;
+}
+#overlay {
+    background-color: rgba(0,0,0,.7);
+    text-align: center;
+    padding-top: 5em;
+    position: absolute;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+#overlay a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    font-weight: bolder;
+
+}
+#overlay img {
+    display: block;
+    margin: auto;
+}

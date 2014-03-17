@@ -1,0 +1,43 @@
+#game-over a {
+    text-decoration: none;
+    color: #FE2C0C;
+    font-size: 1.5em;
+    font-weight: bolder;
+    padding-top: .8em;
+}
+input {
+    height: 1.5em;
+    font-size: 1.5em;
+    margin-top: .8em;
+}
+canvas {
+    border: none;
+}
+#container{
+    padding-top: 0;
+}
+#scoreboard > div {
+    font-size: 1em;
+    font-weight: bold;
+}
+.scoretable tr:nth-child(even)    { background-color:#aad4ff; }
+.scoretable td{
+    vertical-align:middle;
+    
+    
+    border:none;
+    border-width:0px 1px 1px 0px;
+    text-align:center;
+    padding:4px;
+    font-size:14px;
+    font-family:Arial;
+    font-weight:normal;
+    color:#000000;
+}
+#overlay a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.5em;
+    font-weight: bolder;
+
+}
