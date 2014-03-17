@@ -108,19 +108,12 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
         listener.PostSolve = function(contact, impulse) {
             var a = contact.GetFixtureA().GetBody().GetUserData();
             var b = contact.GetFixtureB().GetBody().GetUserData();
-            // console.log(contact.GetFixtureA().GetBody().GetUserData().name);
-            // console.log(contact.GetFixtureB().GetBody().GetUserData().name);
 
             var impulse = impulse.normalImpulses[0];
-                //if (impulse < 2) return;
-          
+
             a.reactToHit(b, impulse);
             b.reactToHit(a, impulse);
-            //console.log(impulse);
-            // var entityA = world[idA];
-            // var entityB = world[idB];
-            // entityA.hit(impulse, entityB);
-            // entityB.hit(impulse, entityA);
+
             
         };
         world.SetContactListener(listener);
@@ -335,7 +328,6 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
         addPowerArrow();
 
 
-        //console.log(e.pageX);
         document.addEventListener(Modernizr.touch ? "touchmove" : "mousemove", handleMouseMove, true);
         document.addEventListener(Modernizr.touch ? "touchend" : "mouseup", handleMouseUp, false);
     
@@ -384,7 +376,7 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
         if (!mouseX) return;
         var angle = Math.atan2(((mouseY * -1))+ (stage.canvas.height - 150),((mouseX * -1)) + (stage.canvas.width * .5));
         var power = Math.max(Math.abs((mouseY) - (stage.canvas.height - 150)),Math.abs((mouseX) - (stage.canvas.width * .5))) * .8;
-        console.log(power)
+
         mouseX = undefined;
         mouseY = undefined;
         // return;
@@ -472,7 +464,7 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
         stage.addChild(arrow.view);
         arrows.push(arrow);
         arrow.view.on("tallyScore",tallyArrowScore,null,false);
-        console.log(arrows.length)
+
         if (arrows.length > 10) {
             stage.removeChild(arrows[0].view);
             arrows[0].cleanUp();
@@ -572,25 +564,19 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
     function onHit(e) {
         addText(e.target)
         e.target.removeEventListener("Hit", onHit);
-        console.log("HIT");
+
         var pStr = String(Math.ceil(Math.random()*3));
-        console.log("pStr",pStr);
+
         createjs.Sound.play("pop" + pStr);
     }
     function addText(target) {
 
         var points = new BalloonPoints(stage, target);
         stage.addChild(points);
-        console.log("points",points)
-        console.log("points.x",points.x)
+
         points.x = target.x;
         points.y = target.y;
         points.on("remove",removeText);
-        console.log("target.x",points.x)
-        console.log("points.x",points.x)
-        //createjs.Tween.get(pointsText);
-        //TweenMax.to(pointsText,2.5,{scaleX:1, scaleY:1, ease:Elastic.easeOut});
-        //TweenMax.to(pointsText,2.5,{scaleX:.2, scaleY:.2, delay:1, ease:Elastic.easeIn, onComplete:removeText, onCompleteParams:[pointsText]});
     }
     function removeText(e){
         stage.removeChild(e.target);
@@ -605,33 +591,10 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
         
     }
     function removeBall(e){
-        console.log(e)
+
     }
     function tick(e) {
-        //console.log("sadf")
 
-        // var increase = Math.PI * 2 / 100;
-        // console.log(Math.cos( counter ) / 2 + 0.5;
-        // counter += increase;
-        // if (isMouseDown) {
-        //     if (!mouseJoint) {
-        //          var body = getBodyAt(mouseX / SCALE, mouseY / SCALE);
-        //          if (body) {
-        //             var md = new b2MouseJointDef();
-        //             md.bodyA = world.GetGroundBody();
-        //             md.bodyB = body;
-        //             md.target.Set(mouseX / SCALE, mouseY / SCALE);
-        //             md.collideConnected = true;
-        //             md.maxForce = 100 * body.GetMass();
-        //             mouseJoint = world.CreateJoint(md);
-        //             body.SetAwake(true);
-        //          }
-        //       } else {
-        //           mouseJoint.SetTarget(new b2Vec2(mouseX / SCALE, mouseY / SCALE));
-        //       }
-            
-        // }
-        //world.DrawDebugData();
         if (!gameOver) {
             stage.update();
 
@@ -643,7 +606,7 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
         }
         balloons.forEach(function(o){
             if(o.toBeRemoved === true) {
-                console.log("REMOVE");
+
                 stage.removeChild(o.view);
                 o.cleanUp()
                 balloons.splice(balloons.indexOf(o),1);
@@ -653,7 +616,7 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
         arrows.forEach(function(o){
           
             if(o.view.toBeRemoved === true) {
-                console.log("REMOVE");
+
                 stage.removeChild(o.view);
                 o.cleanUp()
                 arrows.splice(arrows.indexOf(o),1);

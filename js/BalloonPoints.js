@@ -6,7 +6,7 @@ define(['easeljs'],function(easeljs) {
             throw new TypeError("BalloonPoints constructor cannot be called as a function.");
         }
         this.Container_Init();
-        console.log(this)
+   
         var bonusStar = new createjs.Shape();
         bonusStar.graphics.beginFill("#3786A6")
                             .drawPolyStar(0, 0, 50, 8, 0.6, 25)

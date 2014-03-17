@@ -55,10 +55,11 @@ require(dependencies, function($, GameStage, AssetsLoader) {
         function onCompleteLoad(){
             $("#game-canvas").css('display','inline');
             $("#preload-bar").remove();
-            // console.log(AssetsLoader.loader);
-            // console.log(AssetsLoader.loader);
-            gs = new GameStage();
 
+            $("#git-link").css('display','block');
+
+            gs = new GameStage();
+            
             $(window).resize(function () { clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(resize, 100); 
             });

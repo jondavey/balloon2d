@@ -49,7 +49,7 @@ define(['easeljs', 'box2d', 'Base'], function(easeljs, box2d, Base) {
         } else if (shapeInfo.points) {
             fixDef.shape = new this.b2PolygonShape();
             var points = [];
-            console.log(shapeInfo.points)
+
             for (var i = 0; i < shapeInfo.points.length; i++) {
                 var vec = new this.b2Vec2();
                 vec.Set(shapeInfo.points[i].x / SCALE, shapeInfo.points[i].y / SCALE);
@@ -81,7 +81,7 @@ define(['easeljs', 'box2d', 'Base'], function(easeljs, box2d, Base) {
         this.view = new createjs.Bitmap(skin);
         this.view.width = w;
         this.view.height = h;
-        console.log(window.deviceType)
+
         this.view.regX = window.deviceType == "phone" ? (w * 1) : (w * .5);
         this.view.regY = window.deviceType == "phone" ? (h * 1) : (w * .5);
         this.view.scaleX = this.skinScale;

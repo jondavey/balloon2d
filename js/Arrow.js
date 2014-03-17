@@ -18,15 +18,15 @@ define(['BasicShape'],function(BasicShape) {
         this.view.maxW = stage.canvas.width;
         this.view.toBeRemoved = false;
         this.launched = false;
-        console.log(this.view.body);
+
         this.name = "arrow";
         setTimeout(function(scope){
             scope.complete = true;
         },7000,this);
         setTimeout(function(scope){
-            console.log(scope.launched)
+
             scope.launched = true;
-            console.log(scope.launched)
+
         },100,this)
     }
     Arrow.prototype = new BasicShape();
@@ -81,7 +81,7 @@ define(['BasicShape'],function(BasicShape) {
     Arrow.prototype.setPoints = function(i) {
         this.view.kills++;
         this.view.points += i;
-        //console.log("this.view.points",this.view.points)
+
     }
     Arrow.prototype.reactToHit = function(item, impulse){
 
@@ -99,7 +99,7 @@ define(['BasicShape'],function(BasicShape) {
             || (item.name == "arrow" && item.complete && item.getPosition().y > this.stage.canvas.height - 150)
             ) {
             var f = this.view.body.GetFixtureList()
-            console.log(f);
+
             this.complete = true;
             this.view.dispatchEvent(new createjs.Event("tallyScore"));
         
@@ -115,7 +115,7 @@ define(['BasicShape'],function(BasicShape) {
             this.complete = true;
         }
         if (item.name == "character" && this.launched) {
-            console.log(this.view.body.SetLinearVelocity(new this.b2Vec2(Math.round(Math.random()) == 1 ? 10 : -10,-10)));
+            this.view.body.SetLinearVelocity(new this.b2Vec2(Math.round(Math.random()) == 1 ? 10 : -10,-10));
         }
         if (item.name != "character") {   
             this.view.contact = true;
