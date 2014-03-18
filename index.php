@@ -1,22 +1,28 @@
 <?php
-require_once('_phpinc/battle.class.php');
 
 
 require_once 'Mobile_Detect.php';
 $detect = new Mobile_Detect;
 $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
 $scriptVersion = $detect->getScriptVersion();
-
+$ua = $detect->getUserAgent();
 ?>
 <!DOCTYPE HTML>
 <html>
-<?php if ($deviceType == 'phone') { ?>
-<meta name="viewport" content="width=device-width, initial-scale=.5, user-scalable = no">
-<?php } else { ?>
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable = no">
-<?php } ?>
 <head>
+    <?php if ($deviceType == 'phone') { ?>
+    <meta name="viewport" content="width=device-width, initial-scale=.5, user-scalable = no">
+    <?php } else { ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable = no">
+    <?php } ?>
+    <meta property="og:type" content="game" />
+    <meta property="og:title" content="Balloon2D" />
+    <meta property="og:url" content="http://www.criticalflicker.com/proto/balloon2d/" />
+    <meta property="og:description" content="Simple mobile friendly target practice game using HTML5 Canvas and Box2d physics engine." />
+    <meta property='og:image' content="http://www.criticalflicker.com/proto/balloon2d/images/balloon2d_screen.jpg" />
+
     <title>Ballon2D</title>
+
     <script src="js/modernizr.js"></script>
     <script src="js/libs/require/require.js" data-main="js/main"></script>
     <link rel="stylesheet" type="text/css" href="css/table_style.css">
@@ -46,6 +52,7 @@ $scriptVersion = $detect->getScriptVersion();
 
     <script type="text/javascript">
         window.deviceType = <?php echo "'".$deviceType."'"; ?>;
+        window.ua = <?php echo "'".$ua."'"; ?>;
     </script>
 </body>
 </html>

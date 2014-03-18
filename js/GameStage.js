@@ -240,13 +240,14 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
         });
         $("#post-score").click(function(){
             submitHighScore();
-            $("#post-score").attr('disabled','disabled');
+            
         });
         setTimeout(getHighScores, 500)
         //getHighScores();
     }
     function submitHighScore(){
         if ($("#username").val() == "" || $("#username").val() == "Your Name") return;
+        $("#post-score").attr('disabled','disabled');
         $.ajax({
            url: 'service.php',
            type: 'POST',
@@ -428,6 +429,8 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
                                         y: 200});
         block.setName("block");
         stage.addChild(block.view);
+        block.view.alpha = 0;
+        createjs.Tween.get(block.view).to({alpha:1}, 500);
         blocks.push(block);
         var max = window.deviceType == "phone" ? 8 : 4;
         if (blocks.length == max) {
@@ -600,6 +603,8 @@ define(['jquery', 'easeljs', 'box2d', 'BasicShape', 'Arrow', 'Balloon', 'Charact
 
             world.Step(1/60, 10, 10);
             world.ClearForces();
+
+            //requestAnimFrame(tick);
         }
         if (remainingBalloons == 0 && balloons.length == 0 && getIncompleteArrows().length == 0 && gameOver == false) {
             killGame();

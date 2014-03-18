@@ -39,6 +39,8 @@ require(dependencies, function($, GameStage, AssetsLoader) {
     $("document").ready(function(){
         var resizeTimer;
         var gs;
+        
+        AssetsLoader.initialize();
         AssetsLoader.loader.on("complete", onCompleteLoad)
         AssetsLoader.loader.on("progress", onProgressLoad)
 
@@ -59,13 +61,18 @@ require(dependencies, function($, GameStage, AssetsLoader) {
             $("#git-link").css('display','block');
 
             gs = new GameStage();
-            
+
             $(window).resize(function () { clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(resize, 100); 
             });
             resize();
             //createjs.Sound.play("star");
             var img = $("body").prepend('<div id="overlay" style="height:100%;"><h2>HOW TO PLAY!</h2><br><img src="'+AssetsLoader.getItemById("instructions").src+'"><p><a href="#" id="play">PLAY!</a></p></div>');
+            
+            if (window.ua.indexOf('BlackBerry') != -1) {
+            $("#overlay").prepend('<p>Note: Your device is untested with this game.</p>');
+            return;
+        } 
             $("#play").click(function(){
                 $("#overlay").remove();
                 gs.initGame();
